@@ -4,6 +4,8 @@ WORKDIR /usr/src/app
 
 ARG DATABASE_URL
 
+RUN apt-get update && apt-get install -y openssl libssl-dev
+
 COPY . .
 
 RUN bun install
