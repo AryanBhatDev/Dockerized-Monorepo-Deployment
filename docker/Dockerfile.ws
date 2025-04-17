@@ -9,6 +9,6 @@ COPY . .
 RUN bun install
 RUN bun run generate:db
 
-EXPOSE 8080
+EXPOSE 8081
 
 CMD ["bun","run","start:ws"]

@@ -7,7 +7,7 @@ interface IUser{
 }
 
 
-const wss = new WebSocketServer({port:8080});
+const wss = new WebSocketServer({port:8081});
 
 wss.on('connection',async (socket)=>{
     const user = await client.user.create({
