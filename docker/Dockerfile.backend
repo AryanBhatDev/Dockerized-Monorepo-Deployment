@@ -7,8 +7,6 @@ COPY . .
 RUN bun install
 RUN bun run generate:db
 
-COPY ./apps/backend ./apps/backend
-
 EXPOSE 3001
 
 CMD ["bun","run","start:backend"]
