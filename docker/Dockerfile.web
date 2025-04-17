@@ -4,16 +4,11 @@ WORKDIR /usr/src/app
 
 ARG DATABASE_URL
 
-COPY ./packages ./packages
-COPY ./bun.lock ./bun.lock
-
-COPY ./package.json ./package.json
-COPY ./turbo.json ./turbo.json
+COPY . .
 
 RUN bun install
 RUN bun run generate:db
 
-COPY ./apps/web ./apps/web
 
 RUN DATABASE_URL=${DATABASE_URL} bun run build
 

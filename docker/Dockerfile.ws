@@ -2,16 +2,10 @@ FROM oven/bun:1
 
 WORKDIR /usr/src/app
 
-COPY ./packages ./packages
-COPY ./bun.lock ./bun.lock
-
-COPY ./package.json ./package.json
-COPY ./turbo.json ./turbo.json
+COPY . .
 
 RUN bun install
 RUN bun run generate:db
-
-COPY ./apps/ws-server ./apps/ws-server
 
 EXPOSE 8080
 
