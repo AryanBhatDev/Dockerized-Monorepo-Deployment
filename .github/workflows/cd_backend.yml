@@ -34,8 +34,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          script: |
-            sudo docker pull crazywebdev/mono-backend:${{ github.sha }}
-            sudo docker stop mono-backend || true
-            sudo docker rm mono-backend || true
-            sudo docker run -d --name mono-backend -p 8080:8080 crazywebdev/mono-backend:${{ github.sha }}
+          run: |
+            echo "${{ secrets.SSH_KEY }}" &> ~/ssh_key
+            chmod 700 /home/runner/ssh_key
+            ssh -o StrictHostKeyChecking=no -i ~/ssh_key root@13.239.238.175 -t "docker stop mono-backend && docker run --name mono-backend -d -p 8080:8080 crazywebdev/mono-backend:${{ github.sha }}"
