@@ -38,4 +38,4 @@ jobs:
             sudo docker pull crazywebdev/mono-backend:${{ github.sha }}
             sudo docker stop mono-backend || true
             sudo docker rm mono-backend || true
-            sudo docker run -d --name mono-backend -p 80:8080 crazywebdev/mono-backend:${{ github.sha }}
+            sudo docker run -d --name mono-backend -p 8080:8080 crazywebdev/mono-backend:${{ github.sha }}
